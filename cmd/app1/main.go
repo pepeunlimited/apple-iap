@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/pepeunlimited/apple-iap/applerpc"
+	"github.com/pepeunlimited/apple-iap/internal/app/app1/apple"
+	"github.com/pepeunlimited/apple-iap/internal/app/app1/server"
 	"github.com/pepeunlimited/microservice-kit/headers"
 	"github.com/pepeunlimited/microservice-kit/middleware"
 	"github.com/pepeunlimited/microservice-kit/misc"
-	"github.com/pepeunlimited/rpc-starter-kit/applerpc"
-	"github.com/pepeunlimited/rpc-starter-kit/internal/app/app1/apple"
-	"github.com/pepeunlimited/rpc-starter-kit/internal/app/app1/server"
 	"log"
 	"net/http"
 )

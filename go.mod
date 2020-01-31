@@ -1,4 +1,4 @@
-module github.com/pepeunlimited/rpc-starter-kit
+module github.com/pepeunlimited/apple-iap
 
 go 1.13
 

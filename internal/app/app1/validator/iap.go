@@ -1,8 +1,8 @@
 package validator
 
 import (
+	"github.com/pepeunlimited/apple-iap/applerpc"
 	"github.com/pepeunlimited/microservice-kit/validator"
-	"github.com/pepeunlimited/rpc-starter-kit/applerpc"
 	"github.com/twitchtv/twirp"
 )
 
