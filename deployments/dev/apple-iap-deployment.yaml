@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: apple-iap
+  labels:
+    app: apple-iap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apple-iap
+  template:
+    metadata:
+      labels:
+        app: apple-iap
+    spec:
+      containers:
+        - env:
+            - name: IAP_MODE
+              value: MOCK
+          image: pepeunlimited/apple-iap:0.1
+          name: apple-iap
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
