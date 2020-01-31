@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package pepeunlimited.authentication;
+option go_package = "authrpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+// https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
+
+service AuthenticationService {
+
+    rpc SignIn(SignInParams)                          returns (SignInResponse);
+
+    // refresh the access_token with refresh_token
+    rpc RefreshAccessToken(RefreshAccessTokenParams)  returns (RefreshAccessTokenResponse);
+
+    rpc VerifyAccessToken(VerifyAccessTokenParams)    returns (VerifyAccessTokenResponse);
+}
+
+message SignInParams {
+    string username         = 1; // required
+    string password         = 2; // required
+}
+
+message SignInResponse {
+    string access_token     = 1;
+    string refresh_token    = 2;
+}
+
+message RefreshAccessTokenParams {
+    string refresh_token    = 1; // required
+}
+
+message RefreshAccessTokenResponse {
+    string access_token     = 1;
+    string refresh_token     = 2; // may contain if the server decide to give new refresh_token
+}
+
+message VerifyAccessTokenParams {
+    string access_token     = 1; // required
+}
+
+message VerifyAccessTokenResponse {
+    string username         = 1;
+    string email            = 2;
+    int64  user_id          = 3;
+    repeated string roles   = 4;
+
+}

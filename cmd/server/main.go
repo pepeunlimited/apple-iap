@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/pepeunlimited/apple-iap/apple"
-	"github.com/pepeunlimited/apple-iap/applerpc"
-	"github.com/pepeunlimited/apple-iap/internal/app/app1/server"
+	"github.com/pepeunlimited/apple-iap/internal/server/twrip"
+	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
+	"github.com/pepeunlimited/apple-iap/pkg/applerpc"
 	"github.com/pepeunlimited/microservice-kit/headers"
 	"github.com/pepeunlimited/microservice-kit/middleware"
 	"github.com/pepeunlimited/microservice-kit/misc"
@@ -18,7 +18,7 @@ const (
 func main() {
 	log.Printf("Starting the AppleIAPServer... version=[%v]", Version)
 
-	ts := applerpc.NewAppleIAPServiceServer(server.NewAppleIAPServer(apple.NewAppStoreByMode(misc.GetEnv(apple.IapMode, "MOCK"))), nil)
+	ts := applerpc.NewAppleIAPServiceServer(twrip.NewAppleIAPServer(appleiap.NewAppStoreByMode(misc.GetEnv(appleiap.IapMode, "MOCK"))), nil)
 
 	mux := http.NewServeMux()
 	mux.Handle(ts.PathPrefix(), middleware.Adapt(ts, headers.Username()))

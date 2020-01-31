@@ -1,9 +1,9 @@
-package server
+package twrip
 
 import (
 	"context"
-	"github.com/pepeunlimited/apple-iap/apple"
-	"github.com/pepeunlimited/apple-iap/applerpc"
+	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
+	"github.com/pepeunlimited/apple-iap/pkg/applerpc"
 	"github.com/twitchtv/twirp"
 	"log"
 	"testing"
@@ -11,7 +11,7 @@ import (
 
 func TestAppleIAPServer_VerifyReceipt(t *testing.T) {
 	ctx    := context.TODO()
-	server := NewAppleIAPServer(apple.NewAppStore())
+	server := NewAppleIAPServer(appleiap.NewAppStore())
 	receipt, err := server.VerifyReceipt(ctx, &applerpc.VerifyReceiptParams{
 		Receipt: "receipt",
 	})
@@ -25,7 +25,7 @@ func TestAppleIAPServer_VerifyReceipt(t *testing.T) {
 
 func TestAppleIAPServer_VerifyReceiptMock(t *testing.T) {
 	ctx    := context.TODO()
-	mock := apple.NewAppStoreMock([]int{0, 2000})
+	mock := appleiap.NewAppStoreMock([]int{0, 2000})
 	server := NewAppleIAPServer(&mock)
 	_,err := server.VerifyReceipt(ctx, &applerpc.VerifyReceiptParams{
 		Receipt: "receipt",
@@ -33,7 +33,7 @@ func TestAppleIAPServer_VerifyReceiptMock(t *testing.T) {
 	if err == nil {
 		t.FailNow()
 	}
-	if err.(twirp.Error).Msg() != "internal" {
+	if err.(twirp.Error).Msg() != "apple_iap_internal" {
 		t.FailNow()
 	}
 	receipt,err := server.VerifyReceipt(ctx, &applerpc.VerifyReceiptParams{

@@ -1,17 +1,17 @@
-package server
+package twrip
 
 import (
 	"context"
-	"github.com/pepeunlimited/apple-iap/apple"
-	"github.com/pepeunlimited/apple-iap/applerpc"
-	"github.com/pepeunlimited/apple-iap/internal/app/app1/validator"
+	"github.com/pepeunlimited/apple-iap/internal/server/validator"
+	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
+	"github.com/pepeunlimited/apple-iap/pkg/applerpc"
 	validator2 "github.com/pepeunlimited/microservice-kit/validator"
 	"log"
 )
 
 type AppleIAPServer struct {
 	validator validator.AppleIAPServerValidator
-	appstore  apple.AppStore
+	appstore  appleiap.AppStore
 }
 
 func (server AppleIAPServer) VerifyReceipt(ctx context.Context, params *applerpc.VerifyReceiptParams) (*applerpc.VerifyReceiptResponse, error) {
@@ -40,9 +40,9 @@ func (server AppleIAPServer) password(params *applerpc.VerifyReceiptParams) *str
 	return &params.Password.Value
 }
 
-func NewAppleIAPServer(appstore apple.AppStore) AppleIAPServer {
+func NewAppleIAPServer(appstore appleiap.AppStore) AppleIAPServer {
 	return AppleIAPServer{
-		validator: 			validator.NewAppleIAPServerValidator(),
-		appstore:			appstore,
+		validator: validator.NewAppleIAPServerValidator(),
+		appstore:  appstore,
 	}
 }

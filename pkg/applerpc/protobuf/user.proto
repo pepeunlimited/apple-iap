@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package pepeunlimited.users;
+option go_package = "usersrpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+// https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto
+
+service UserService {
+    // Create the User
+    rpc CreateUser(CreateUserParams)                   returns (User);
+
+    // Get the user
+    rpc GetUser(GetUserParams)                         returns (User);
+
+    // set or update the profile picture for the user
+    rpc SetProfilePicture(SetProfilePictureParams)       returns (ProfilePicture);
+
+    // delete the profile picture from the user
+    rpc DeleteProfilePicture(DeleteProfilePictureParams)     returns (ProfilePicture);
+}
+
+message SetProfilePictureParams {
+    int64 profile_picture_id = 1;
+    int64 user_id           = 2;
+}
+
+message DeleteProfilePictureParams {
+    int64 user_id           = 2;
+}
+
+message ProfilePicture {
+    int64 profile_picture_id = 1;
+}
+
+// CreateUser:CreateUserParams
+message CreateUserParams {
+    string username     = 1; // required
+    string password     = 2; // required
+    string email        = 3; // required
+}
+
+message User {
+    int64 id                 = 1;
+    string username          = 2;
+    string email             = 3;
+    repeated string roles    = 4;
+    int64 profile_picture_id  = 5;
+}
+
+message GetUserParams {
+    int64 user_id = 1;
+}

@@ -2,12 +2,12 @@ package applerpc
 
 import (
 	"context"
-	"github.com/pepeunlimited/apple-iap/apple"
+	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
 )
 
 type AppleIAPMock struct {
-	mock 		apple.AppStoreMock
-	productId 	string
+	mock      appleiap.AppStoreMock
+	productId string
 }
 
 func (a AppleIAPMock) VerifyReceipt(ctx context.Context, params *VerifyReceiptParams) (*VerifyReceiptResponse, error) {
@@ -22,6 +22,6 @@ func (a AppleIAPMock) VerifyReceipt(ctx context.Context, params *VerifyReceiptPa
 	},nil
 }
 
-func NewAppleIAPMock(mock apple.AppStoreMock) AppleIAPMock {
+func NewAppleIAPMock(mock appleiap.AppStoreMock) AppleIAPMock {
 	return AppleIAPMock{mock:mock}
 }
