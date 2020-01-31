@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/pepeunlimited/apple-iap/apple"
 	"github.com/pepeunlimited/apple-iap/applerpc"
-	"github.com/pepeunlimited/apple-iap/internal/app/app1/apple"
 	"github.com/pepeunlimited/apple-iap/internal/app/app1/server"
 	"github.com/pepeunlimited/microservice-kit/headers"
 	"github.com/pepeunlimited/microservice-kit/middleware"
@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	Version = "0.0.1"
+	Version = "0.0.3"
 )
 
 func main() {

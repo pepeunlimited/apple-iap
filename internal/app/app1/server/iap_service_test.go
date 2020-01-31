@@ -2,8 +2,8 @@ package server
 
 import (
 	"context"
+	"github.com/pepeunlimited/apple-iap/apple"
 	"github.com/pepeunlimited/apple-iap/applerpc"
-	"github.com/pepeunlimited/apple-iap/internal/app/app1/apple"
 	"github.com/twitchtv/twirp"
 	"log"
 	"testing"

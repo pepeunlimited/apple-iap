@@ -2,16 +2,16 @@ package server
 
 import (
 	"context"
+	"github.com/pepeunlimited/apple-iap/apple"
 	"github.com/pepeunlimited/apple-iap/applerpc"
-	"github.com/pepeunlimited/apple-iap/internal/app/app1/apple"
 	"github.com/pepeunlimited/apple-iap/internal/app/app1/validator"
 	validator2 "github.com/pepeunlimited/microservice-kit/validator"
 	"log"
 )
 
 type AppleIAPServer struct {
-	validator 			validator.AppleIAPServerValidator
-	appstore			apple.AppStore
+	validator validator.AppleIAPServerValidator
+	appstore  apple.AppStore
 }
 
 func (server AppleIAPServer) VerifyReceipt(ctx context.Context, params *applerpc.VerifyReceiptParams) (*applerpc.VerifyReceiptResponse, error) {
