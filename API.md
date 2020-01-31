@@ -3,9 +3,9 @@
 ### Install
 ```$ brew install jq > curl ... | jq```
 
-##### CreateTodo
+##### VerifyReceipt
 ```
-$ curl -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_WITH_TOKEN" \
- -X POST "localhost:8080/twirp/pepeunlimited.todo.TodoService/CreateTodo" \
- -d '{"standard_vat": "24.00"}'
+$  curl -H "Content-Type: application/json" \
+-X POST "api.dev.pepeunlimited.com/twirp/pepeunlimited.apple.AppleIAPService/VerifyReceipt" \
+-d '{"receipt": "base64+encoded"}'
 ```
