@@ -1,3 +1,0 @@
-[submodule "applerpc/protobuf"]
-	path = applerpc/protobuf
-	url = git@github.com:pepeunlimited/protobuf.git
