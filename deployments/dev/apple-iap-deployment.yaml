@@ -18,7 +18,7 @@ spec:
         - env:
             - name: IAP_MODE
               value: MOCK
-          image: pepeunlimited/apple-iap:0.0.2-5-gbc7ea62
+          image: pepeunlimited/apple-iap:0.0.2-8-g47c30c3
           name: apple-iap
           ports:
             - containerPort: 8080

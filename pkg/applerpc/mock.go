@@ -3,6 +3,7 @@ package applerpc
 import (
 	"context"
 	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
+	"log"
 )
 
 type AppleIAPMock struct {
@@ -15,9 +16,10 @@ func (a AppleIAPMock) VerifyReceipt(ctx context.Context, params *VerifyReceiptPa
 	if err != nil {
 		return nil, err
 	}
+	log.Print(receipt)
 	return &VerifyReceiptResponse{
-		Status:         VerifyReceiptResponse_Status(receipt.Status),
-		Type:           VerifyReceiptResponse_CONSUMABLE,
+		Status:         "OK",
+		Type:           "CONSUMABLE",
 		AppleProductId: a.productId,
 	},nil
 }
