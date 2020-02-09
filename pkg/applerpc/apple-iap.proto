@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package pepeunlimited.apple;
+option go_package = "applerpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+
+// https://developer.apple.com/in-app-purchase/
+// https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html
+// https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html
+// https://stackoverflow.com/questions/6439482/how-does-apple-notify-ios-apps-of-refunds-of-in-app-purchases-iap
+// https://developer.apple.com/documentation/appstorereceipts
+
+service AppleIAPService {
+
+    rpc VerifyReceipt(VerifyReceiptParams) returns (VerifyReceiptResponse);
+}
+
+message VerifyReceiptParams {
+    string receipt                          = 1; // required
+    google.protobuf.StringValue password    = 2; // Only used for receipts that contain auto-renewable subscriptions
+}
+
+message VerifyReceiptResponse {
+//    enum Status {
+//        UNKNOWN_STATUS          = 0;
+//        OK                      = 1;
+//        REFUNDED                = 2;
+//        SUBSCRIPTION_CANCELED   = 3;
+//    }
+//    enum Type {
+//        UNKNOWN_IAP_TYPE            = 0;
+//        CONSUMABLE                  = 1;
+//        NON_CONSUMABLE              = 2;
+//        AUTO_RENEWABLE_SUBSCRIPTION = 3;
+//        NON_RENEWING_SUBSCRIPTIONS  = 4;
+//    }
+    string status                   = 1;
+    string type                     = 2;
+    string apple_product_id         = 3;
+}
+

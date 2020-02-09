@@ -27,8 +27,8 @@ func (server AppleIAPServer) VerifyReceipt(ctx context.Context, params *applerpc
 	}
 	log.Print(verified)
 	return &applerpc.VerifyReceiptResponse{
-		Status:         applerpc.VerifyReceiptResponse_OK,
-		Type:           applerpc.VerifyReceiptResponse_CONSUMABLE,
+		Status:         "OK",			// TODO: enum?
+		Type:           "CONSUMABLE",	// TODO: enum?
 		AppleProductId: "AppleProductID",
 	}, nil
 }
