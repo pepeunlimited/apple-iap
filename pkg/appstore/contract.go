@@ -1,4 +1,4 @@
-package appleiap
+package appstore
 
 import (
 	"context"

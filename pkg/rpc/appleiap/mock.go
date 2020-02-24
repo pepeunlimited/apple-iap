@@ -1,13 +1,13 @@
-package applerpc
+package appleiap
 
 import (
 	"context"
-	"github.com/pepeunlimited/apple-iap/pkg/appleiap"
+	"github.com/pepeunlimited/apple-iap/pkg/appstore"
 	"log"
 )
 
 type AppleIAPMock struct {
-	mock      appleiap.AppStoreMock
+	mock      appstore.AppStoreMock
 	productId string
 }
 
@@ -24,6 +24,6 @@ func (a AppleIAPMock) VerifyReceipt(ctx context.Context, params *VerifyReceiptPa
 	},nil
 }
 
-func NewAppleIAPMock(mock appleiap.AppStoreMock) AppleIAPMock {
+func NewAppleIAPMock(mock appstore.AppStoreMock) AppleIAPMock {
 	return AppleIAPMock{mock:mock}
 }

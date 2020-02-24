@@ -1,4 +1,4 @@
-package appleiap
+package appstore
 
 import (
 	"context"
@@ -6,11 +6,11 @@ import (
 )
 
 
-type apple struct {
+type client struct {
 	client 		*appstore.Client
 }
 
-func (apple apple) VerifyReceipt(ctx context.Context, receipt string, password *string) (*appstore.IAPResponse, error) {
+func (apple client) VerifyReceipt(ctx context.Context, receipt string, password *string) (*appstore.IAPResponse, error) {
 	req := appstore.IAPRequest{
 		ReceiptData: receipt,
 	}
@@ -26,5 +26,5 @@ func (apple apple) VerifyReceipt(ctx context.Context, receipt string, password *
 }
 
 func NewAppStore() AppStore {
-	return apple{client:appstore.New()}
+	return client{client:appstore.New()}
 }
